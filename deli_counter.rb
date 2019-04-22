@@ -5,9 +5,8 @@ def line(line_array)
     puts "The line is currently empty." 
   else
     compiled_line = ""
-    line_array.each_index do |index_number|
-      queue_number = index_number + 1
-      compiled_line << " #{queue_number}. #{line_array[index_number]}"
+    line_array.each.with_index do |element, index_number|
+      compiled_line << " #{index_number + 1}. #{element}"
     end
     puts "The line is currently:#{compiled_line}"
   end
@@ -19,10 +18,5 @@ def take_a_number(line_array, new_customer)
 end
 
 def now_serving(line_array)
-  if line_array.length == 0
-    puts "There is nobody waiting to be served!"
-  else 
-    puts "Currently serving #{line_array[0]}."
-    line_array.shift
-  end
+  puts line_array.length == 0 ? "There is nobody waiting to be served!" : "Currently serving #{line_array.shift}."
 end
